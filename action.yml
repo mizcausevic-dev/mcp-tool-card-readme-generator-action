@@ -1,0 +1,36 @@
+name: "MCP Tool Card README Generator"
+description: "Renders a human-readable Markdown README from an MCP Tool Card JSON via mcp-tool-card-readme-generator. Posts the rendered markdown as a PR comment, and/or writes it to a target file path (for repos that want their docs auto-updated)."
+author: "mizcausevic-dev"
+branding:
+  icon: "book-open"
+  color: "purple"
+
+inputs:
+  card-path:
+    description: "Path (relative to repo root) to the MCP Tool Card JSON file."
+    required: true
+  output-path:
+    description: "Optional. If set, the rendered Markdown is written to this path (relative to repo root)."
+    required: false
+  comment-on-pr:
+    description: "Post the rendered Markdown as a PR comment. 'auto' (default) posts only on pull_request events."
+    required: false
+    default: "auto"
+  hide-badges:
+    description: "Suppress the trailing safety badges (default 'false')."
+    required: false
+    default: "false"
+  github-token:
+    description: "Token used to post the PR comment (defaults to GITHUB_TOKEN)."
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  markdown-length:
+    description: "Length (in characters) of the rendered Markdown."
+  output-written:
+    description: "True iff an output-path was specified and successfully written."
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
