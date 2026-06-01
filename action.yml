@@ -1,5 +1,5 @@
 name: "MCP Tool Card README Generator"
-description: "Renders a human-readable Markdown README from an MCP Tool Card JSON via mcp-tool-card-readme-generator. Posts the rendered markdown as a PR comment, and/or writes it to a target file path (for repos that want their docs auto-updated)."
+description: "Render a Markdown README from an MCP Tool Card JSON. Post as PR comment or commit to a target path."
 author: "mizcausevic-dev"
 branding:
   icon: "book-open"
